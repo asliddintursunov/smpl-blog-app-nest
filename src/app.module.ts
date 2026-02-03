@@ -7,9 +7,16 @@ import { PostsController } from './posts/posts.controller';
 import { PostsService } from './posts/posts.service';
 import { PostsModule } from './posts/posts.module';
 import { CommentsModule } from './comments/comments.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [UsersModule, AuthModule, PostsModule, CommentsModule],
+  imports: [
+    UsersModule,
+    AuthModule,
+    PostsModule,
+    CommentsModule,
+    DatabaseModule,
+  ],
   controllers: [AppController, PostsController],
   providers: [AppService, PostsService],
 })
