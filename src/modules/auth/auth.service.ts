@@ -5,8 +5,8 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UsersService } from 'src/users/users.service';
-import { CreateUserDto } from 'src/users/dto/create-user.dto';
+import { UsersService } from 'src/modules/users/users.service';
+import { CreateUserDto } from 'src/modules/users/dto/create-user.dto';
 import { LoginDto } from './dto/login.dto';
 import { hashPassword, verifyPassword } from 'src/libs/helpers';
 

@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
 import { PostsService } from './posts.service';
-import { JwtAuthGuard } from 'src/auth/auth.guard';
+import { JwtAuthGuard } from 'src/guards/auth.guard';
 import { CreatePostDto } from './dto/create-post.dto';
 import { type IRequest } from 'src/types/request.type';
 

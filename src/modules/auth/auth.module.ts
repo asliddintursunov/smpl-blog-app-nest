@@ -6,7 +6,7 @@ import { AuthController } from './auth.controller';
 import { JwtStrategy } from './jwt.strategy';
 import { jwtConstants } from './constants';
 import { UsersModule } from '../users/users.module';
-import { DatabaseModule } from 'src/database/database.module';
+import { DatabaseModule } from 'src/modules/database/database.module';
 
 @Module({
   imports: [

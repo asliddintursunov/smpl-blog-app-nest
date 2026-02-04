@@ -1,13 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
-import { AuthModule } from './auth/auth.module';
-import { PostsController } from './posts/posts.controller';
-import { PostsService } from './posts/posts.service';
-import { PostsModule } from './posts/posts.module';
-import { CommentsModule } from './comments/comments.module';
-import { DatabaseModule } from './database/database.module';
+import { UsersModule } from './modules/users/users.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { PostsController } from './modules/posts/posts.controller';
+import { PostsService } from './modules/posts/posts.service';
+import { PostsModule } from './modules/posts/posts.module';
+import { CommentsModule } from './modules/comments/comments.module';
+import { DatabaseModule } from './modules/database/database.module';
 
 @Module({
   imports: [
@@ -17,7 +15,7 @@ import { DatabaseModule } from './database/database.module';
     CommentsModule,
     DatabaseModule,
   ],
-  controllers: [AppController, PostsController],
-  providers: [AppService, PostsService],
+  controllers: [PostsController],
+  providers: [PostsService],
 })
 export class AppModule {}
