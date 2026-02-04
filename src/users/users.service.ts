@@ -1,8 +1,35 @@
 import { Injectable } from '@nestjs/common';
+import { CreateUserDto } from './dto/create-user.dto';
+import { DatabaseService } from 'src/database/database.service';
 
 @Injectable()
 export class UsersService {
-  create(body): any {
-    return body;
+  constructor(private readonly db: DatabaseService) {}
+
+  findByEmail(email: string) {
+    return this.db.user.findUnique({
+      where: { email },
+      select: {
+        name: true,
+        email: true,
+        role: true,
+        password: true,
+        id: true,
+      },
+    });
+  }
+
+  create(data: CreateUserDto) {
+    return this.db.user.create({
+      data: {
+        ...data,
+        name: data.name ?? data.email.split('@')[0],
+      },
+      select: {
+        name: true,
+        email: true,
+        role: true,
+      },
+    });
   }
 }
