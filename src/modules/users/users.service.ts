@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { DatabaseService } from 'src/modules/database/database.service';
 
@@ -31,5 +31,11 @@ export class UsersService {
         role: true,
       },
     });
+  }
+
+  delete(userId: string, currUserId: string) {
+    if (userId === currUserId)
+      throw new BadRequestException('You cannot delete yourself!');
+    return this.db.user.delete({ where: { id: userId } });
   }
 }
