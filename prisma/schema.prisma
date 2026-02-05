@@ -14,12 +14,13 @@ datasource db {
 }
 
 model User {
-  id       String   @id @default(uuid())
+  id       String    @id @default(uuid())
   name     String?
-  email    String   @unique
+  email    String    @unique
   password String
-  role     UserRole @default(USER)
+  role     UserRole  @default(USER)
   posts    Post[]
+  comments Comment[]
 }
 
 model Post {
@@ -29,7 +30,20 @@ model Post {
   isPublished Boolean @default(false)
 
   authorId String
-  author   User   @relation(fields: [authorId], references: [id])
+  author   User      @relation(fields: [authorId], references: [id])
+  comments Comment[]
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  content   String
+  createdAt DateTime @default(now())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  postId String
+  post   Post   @relation(fields: [postId], references: [id])
 }
 
 enum UserRole {

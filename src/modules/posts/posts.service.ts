@@ -34,9 +34,7 @@ export class PostsService {
       select: { authorId: true },
     });
 
-    if (!post) {
-      throw new NotFoundException('Post not found');
-    }
+    if (!post) throw new NotFoundException('Post not found');
 
     const isAdmin = req.user.role === UserRoles.ADMIN;
     const isAuthor = post.authorId === req.user.userId;
